@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Show Information</title>
+{% endblock %}
+{% block content %}
+            <table class="table table-bordered border-danger m-auto w-50 mt-3">
+                <thead>
+                    <tr>
+                        <th> Customer ID</th>
+                        <th> Customer First Name</th>
+                        <th> Customer Last Name</th>
+                        <th> Customer Address</th>
+                        <th> Customer Mobile No</th>
+                        <th> Food Order</th>
+                        <th colspan="2" class="text-center"> Action </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for onlinefood in order %}
+                        <tr>
+                            <td>{{ onlinefood.id  }}</td>
+                            <td>{{ onlinefood.customer_first_name }}</td>
+                            <td>{{ onlinefood.customer_last_name }}</td>
+                            <td>{{ onlinefood.customer_address }}</td>
+                            <td>{{ onlinefood.customer_mobile_no }}</td>
+                            <td>{{ onlinefood.food_mode }}</td>
+                            <td>
+                                <a href="{% url 'update_url' onlinefood.id %}">
+                                    <button class="btn btn-light col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'cancel_url' onlinefood.id %}">
+                                    <button class="btn btn-danger col-12"><i class="bi bi-trash"></i> &nbsp Cancel </button>
+                                </a>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Food Information</title>
+{% endblock %}
+{% block content %}
+
+            <div class="border border-5 col-6 mt-2 m-auto p-2">
+                <h3 class="btn btn-secondary col-12 m-auto mb-2 mt-2"> Fill information for the Order</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Place Order" class="btn btn-primary col-5">
+                    <input type="reset" value="Clear" class="btn btn-primary col-5 float-end">
+                </form>
+            </div>
+{% endblock %}
